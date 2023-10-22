@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+
+    <!--Common Tags --->
+    <meta name="keywords" content="Simple JavaScript Calculator, JavaScript, Calculator, JS Calci">
+
+    <!--Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta property="og:title" content="Simple JavaScript Calculator" />
+    <meta property="og:description" content="Simple JavaScript Calculator" />
+    <meta property="og:site_name" content="Simple JavaScript Calculator" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="fb:admins" content="website" />
+    <meta property="og:url" content="https://raw.githubusercontent.com/ValenciaW9/" />
+
+    <!--Search Engine-->
+    <meta property="description" content="Simple JavaScript Calculator" />
+
+    <!-- Schema.org for Google -->
+    <meta itemprop="name" content="Simple JavaScript Calculator" />
+    <meta itemprop="description" content="Simple JavaScript Calculator" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Simple JavaScript Calculator" />
+    <meta property="twitter:description" content="Simple JavaScript Calculator" />
+    <meta property="twitter:creator:id" content="@cocomonet90" />
+
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+</head>
+
+<body>
+    <div class="toggle-container">
+        <label class="toggle-container">
+            <input type="toggle-slider">
+        </label>
+    </div>
+    <div class="container">
+        <h1>
+            <a href="#" onclick="location.reload();">Calculator</a>
+            <img id="historybutton" src="./images/history.png" alt="History">
+        </h1>
+        <div class="calculator">
+            <label for="answer">Result:</label>
+            <input type="text" name="screen" id="answer" readonly>
+            <table>
+                <tr>
+                    <td><button>(</button></td>
+                    <td><button>)</button></td>
+                    <td>
+                        <div class="row">
+                            <div class="col">
+                                <button onclick="deleteLastEntry()">CE</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td><button>%</button></td>
+                </tr>
+                <tr>
+                    <td><button>7</button></td>
+                    <td><button>8</button></td>
+                    <td><button>9</button></td>
+                    <td><button>X</button></td>
+                </tr>
+                <tr>
+                    <td><button>4</button></td>
+                    <td><button>5</button></td>
+                    <td><button>6</button></td>
+                    <td><button>-</button></td>
+                </tr>
+                <tr>
+                    <td><button>1</button></td>
+                    <td><button>2</button></td>
+                    <td><button>3</button></td>
+                    <td><button>+</button></td>
+                </tr>
+                <tr>
+                    <td><button>0</button></td>
+                    <td><button>.</button></td>
+                    <td><button>/</button></td>
+                    <td><button>=</button></td>
+                </tr>
+            </table>
+            <hr>
+            <div>
+                Made with <img src="./images/heart.png" alt="Heart"> by <a href="https://raw.githubusercontent.com/ValenciaW9">ValenciaW9</a>
+            </div>
+        </div>
+    </div>
+    <div id="bar1" class="bars"></div>
+    <div id="bar2" class="bars"></div>
+    <div id="history"></div>
+    <div id="turn">
+        PLEASE TURN YOUR DEVICE
+    </div>
+
+    <script src="./scripts/hist.js"></script>
+    <script src="./scripts/calc.js"></script>
+    <!-- Global site tag(gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70447982-5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-70447982-5');
+    </script>
+    <script>
+        const toggleMode = document.getElementById("toggle-mode");
+        const container = document.querySelector('.container');
+
+        toggleMode.addEventListener('change', function () {
+            container.classList.toggle('dark-mode');
+        });
+
+        // This function will be responsible for handling the button press from the keyboard. Try this key if you'd like to modify the settings.
+        function handleKeyPress(key) {
+            // "Enter" key is pressed, trigger the "=" button press
+            if (key == 'Enter') {
+                handleButtonPress('=');
+            }
+            // "Delete" or "Backspace" key is pressed, trigger the "CE" button press
+            if (key == 'Delete' || key == 'Backspace') {
+                handleButtonPress('CE');
+            }
+            // number key is pressed, trigger the corresponding number button press
+            if (/[0-9]/.test(key)) {
+                handleButtonPress(key);
+            }
+        }
+    </script>
+</body>
+
+</html>
